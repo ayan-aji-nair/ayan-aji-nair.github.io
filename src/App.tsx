@@ -62,16 +62,18 @@ export const App: React.FC = () => {
 
   const toggleTheme = () => setTheme((t) => (t === 'light' ? 'dark' : 'light'))
 
+  const BASE = import.meta.env.BASE_URL
+
   const pages = useMemo(
     () => [
-      { id: 'about',    title: 'about',    file: '/content/about.md' },
-      { id: 'projects', title: 'projects', file: '/content/projects.md' },
-      { id: 'blog',     title: 'blog',     file: '/content/blog.md' }, // file kept for fallback, but we render MediumFeed
-      // New: resume opens a PDF in a new tab (link handled directly by TopNav)
-      { id: 'resume',   title: 'resume',   href: '/ayan-nair-resume.pdf' }
+      { id: 'about',    title: 'about',    file: `${BASE}content/about.md` },
+      { id: 'projects', title: 'projects', file: `${BASE}content/projects.md` },
+      { id: 'blog',     title: 'blog',     file: `${BASE}content/blog.md` },
+      { id: 'resume',   title: 'resume',   href: `${BASE}ayan-nair-resume.pdf` } // opens in new tab via TopNav
     ],
     []
   )
+  
 
   return (
     <div className={clsx('app')}>
